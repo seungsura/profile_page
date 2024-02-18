@@ -9,7 +9,7 @@ import Education from '@/components/Education';
 import ToolBox from '@/components/ToolBox';
 import Projects from '@/components/Projects';
 import ContactMe from '@/components/ContactMe';
-
+//test
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
 
