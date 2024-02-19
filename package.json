@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@nestjs/config": "^3.2.0",
+    "@nestjs/typeorm": "^10.0.2",
+    "mysql2": "^3.9.1",
+    "next-themes": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.56"
+  }
+}

@@ -1,6 +1,5 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
-import AnimatedCursor from 'react-animated-cursor';
 import { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
 import LandingPage from '@/components/LandingPage';
