@@ -1,4 +1,4 @@
-import './globals.css';
+import '../styles/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { Geologica } from 'next/font/google';
 
@@ -9,8 +9,8 @@ const montserrat = Geologica({
 });
 
 export const metadata = {
-	title: 'Chirag Aggarwal',
-	description: "Hi There! I'm a student at Bennett University in Greater Noida, India...",
+	title: 'Profile Page',
+	description: "Hi! This is Profile page for studying",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

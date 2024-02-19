@@ -41,6 +41,7 @@ export default function Projects() {
 		}
 	}, [modalImg]);
 
+	// 프로젝트 리스트는 Json형식으로 받아서 처리하는 방식으로 가야 할 듯
 	const projects: Project[] = [
 		{
 			index: 0,

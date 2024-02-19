@@ -18,7 +18,7 @@ export default function ContactMe() {
 
 	const submitForm = (e: FormEvent) => {
 		e.preventDefault();
-
+		// 이메일 유효성 검사
 		if (validateEmail(form.current?.from_email.value) === null) {
 			setStatus('Invalid Email!');
 			setTimeout(() => {
@@ -33,7 +33,7 @@ export default function ContactMe() {
 		if (form.current === null) {
 			return;
 		}
-
+		// 여기가 이메일 submit버튼 누르면 동작하는 기능
 		emailjs
 			.sendForm(
 				process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -63,36 +63,36 @@ export default function ContactMe() {
 				<span className="flex items-center pb-4">
 					<AiOutlineMail className="mr-2" />
 					<Link
-						href="mailto: chiragaggarwal5k@gmail.com"
+						href="mailto: 여기는 이메일주소가 들어갈 자리"
 						className="group transition duration-300"
 						rel="noreferrer"
 						target="_blank"
 					>
-						chiragaggarwal5k@gmail.com
+						여기는 이메일주소가 들어갈 자리
 						<span className="block h-0.5 max-w-0 bg-black transition-all duration-500 group-hover:max-w-full dark:bg-white"></span>
 					</Link>
 				</span>
 				<span className="flex items-center pb-4">
 					<AiOutlineWhatsApp className="mr-2" />
 					<Link
-						href="https://wa.me/919667658415"
+						href="여기는 전화번호 링크 (예를들어 왓츠앱 또는 뭐 연락수단 링크 자리)"
 						rel="noreferrer"
 						className="group transition duration-300"
 						target="_blank"
 					>
-						+91 96676 58415
+						여기는 전화번호 표기할 자리
 						<span className="block h-0.5 max-w-0 bg-black transition-all duration-500 group-hover:max-w-full dark:bg-white"></span>
 					</Link>
 				</span>
 				<span className="flex items-center">
 					<AiOutlineLink className="mr-2" />
 					<Link
-						href="https://chirag-aggarwal-resume.tiiny.site/"
+						href="여기는 이력서(자기소개서) 다운 링크가 들어갈 자리(구글 드라이브 등)"
 						rel="noreferrer"
 						className="group transition duration-300"
 						target="_blank"
 					>
-						Download Resume
+						Download Resume 라는 문구가 들어갈 자리
 						<span className="block h-0.5 max-w-0 bg-black transition-all duration-500 group-hover:max-w-full dark:bg-white"></span>
 					</Link>
 				</span>
@@ -105,21 +105,21 @@ export default function ContactMe() {
 			>
 				<input
 					type="text"
-					placeholder="Your Name"
+					placeholder="Your Name 라는 문구가 들어갈 자리"
 					name="from_name"
 					required
 					className="mb-2 h-10 max-w-xl rounded-lg border-2 bg-white p-5 text-sm hover:border-cyan-500 dark:border-transparent dark:bg-gray-900 dark:hover:border-gray-700"
 				/>
 				<input
 					type="email"
-					placeholder="Your Email"
+					placeholder="Your Email 라는 문구가 들어갈 자리"
 					name="from_email"
 					required
 					className="mb-2 h-10 max-w-xl rounded-lg border-2 bg-white p-5 text-sm hover:border-cyan-500 dark:border-transparent dark:bg-gray-900 dark:hover:border-gray-700"
 				/>
 				<textarea
 					rows={5}
-					placeholder="Your Message"
+					placeholder="Your Message 라는 문구가 들어갈 자리"
 					name="message"
 					minLength={10}
 					required
