@@ -14,9 +14,9 @@ export default function Education() {
 					<div className="group m-4 flex justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500  dark:border-gray-800 dark:text-white dark:hover:border-cyan-700">
 						<Fade left cascade>
 							<div>
-								<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">2020</p>
-								<p className="my-1 text-xl font-medium">Class X</p>
-								<p className="my-1 text-sm font-medium">CBSE</p>
+								<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">연도</p>
+								<p className="my-1 text-xl font-medium">교육받은곳(대학, 교육 등 커리어) 이름</p>
+								<p className="my-1 text-sm font-medium">등급</p>
 								<p className="text-sm">Grade: 91.2% </p>
 							</div>
 							<div className="block">
@@ -24,10 +24,10 @@ export default function Education() {
 									src="/bps_logo.png"
 									alt="BPS Logo"
 									width={100}
-									title="BPS Mayur Vihar Phase III"
+									title="그냥 이미지 블록 이름 적는 곳"
 									height={100}
 									onClick={() => {
-										window.open('https://www.bpsmv.edu.in/', '_blank');
+										window.open('교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)', '_blank');
 									}}
 									className="hover:cursor-pointer"
 								/>
@@ -38,10 +38,10 @@ export default function Education() {
 						<Fade left>
 							<div>
 								<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">
-									2020-2022
+									연도-연도
 								</p>
-								<p className="my-1 text-xl font-medium">Class XII</p>
-								<p className="my-1 text-sm font-medium">Science</p>
+								<p className="my-1 text-xl font-medium">암거나</p>
+								<p className="my-1 text-sm font-medium">과학</p>
 								<p className="text-sm">Grade: 89.5% </p>
 							</div>
 							<div className="block">
@@ -50,9 +50,9 @@ export default function Education() {
 									alt="BPS Logo"
 									width={100}
 									height={100}
-									title="BPS Mayur Vihar Phase III"
+									title="그냥 이미지 블록 이름 적는 곳"
 									onClick={() => {
-										window.open('https://www.bpsmv.edu.in/', '_blank');
+										window.open('교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)', '_blank');
 									}}
 									className="hover:cursor-pointer"
 								/>
@@ -63,10 +63,10 @@ export default function Education() {
 						<Fade left>
 							<div>
 								<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">
-									2022-2026
+									연도-연도
 								</p>
-								<p className="my-1 font-medium sm:text-xl">B.Tech in Computer Science</p>
-								<p className="my-1 text-sm font-medium">Bennett University</p>
+								<p className="my-1 font-medium sm:text-xl">전남대학교</p>
+								<p className="my-1 text-sm font-medium">chonnam University</p>
 								<p className="text-sm">CGPA: 9.66</p>
 							</div>
 							<Image
@@ -74,9 +74,9 @@ export default function Education() {
 								alt="Bennett Logo"
 								width={100}
 								height={100}
-								title="Bennett University"
+								title="그냥 이미지 블록 이름 적는 곳"
 								onClick={() => {
-									window.open('https://www.bennett.edu.in/', '_blank');
+									window.open('교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)', '_blank');
 								}}
 								className="object-contain hover:cursor-pointer"
 							/>

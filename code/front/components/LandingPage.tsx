@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import TextTransition, { presets } from 'react-text-transition';
 
 export default function LandingPage() {
-	const line1 = 'Hi, I am a passionate computer science student from India🇮🇳 🇮🇳';
+	const line1 = 'Hi, I am a DevOps Engineer';
 	const line2 = 'I like to learn new things and build stuff.';
 
 	const [mounted, setMounted] = useState(false);
@@ -28,7 +28,7 @@ export default function LandingPage() {
 		<div className="min-h-[100dvh] w-full md:flex md:items-center md:justify-center">
 			<div className="px-10 pt-10 text-center">
 				<h1 className="py-2 text-3xl font-medium text-cyan-700 dark:text-cyan-600 sm:text-4xl md:text-5xl">
-					Chirag Aggarwal
+					성 이름
 				</h1>
 
 				{mounted ? (
@@ -98,7 +98,7 @@ export default function LandingPage() {
 				)}
 				<div className="flex justify-center gap-16 py-3 text-5xl text-gray-600">
 					<a
-						href="https://github.com/ChiragAgg5k"
+						href="깃허브 링크가 들어갈 자리"
 						target="_blank"
 						aria-label="Github"
 						rel="noreferrer"
@@ -108,7 +108,7 @@ export default function LandingPage() {
 						<p className="invisible text-xs group-hover:visible">Github</p>
 					</a>
 					<a
-						href="https://www.linkedin.com/in/chiragagg5k/"
+						href="링크드인 같은 링크가 들어갈 자리 필요한가? 아이콘은 AifillLinkedin을 변경해야함"
 						target="_blank"
 						rel="noreferrer"
 						aria-label="LinkedIn"
@@ -118,7 +118,7 @@ export default function LandingPage() {
 						<p className=" invisible  text-xs group-hover:visible">LinkedIn</p>
 					</a>
 					<a
-						href="https://leetcode.com/ChiragAgg5k/"
+						href="릿코드 링크가 들어갈 자리 (백준?)"
 						target="_blank"
 						rel="noreferrer"
 						aria-label="Leetcode"
@@ -136,9 +136,9 @@ export default function LandingPage() {
 					loop
 					muted
 					className="w-100 mx-auto rounded-full border-4 border-cyan-500"
-					poster="/coding_anim_thumb.jpg"
-				>
-					<source src="/coding_anim.mp4" type="video/mp4" />
+					poster="/coding_anim_thumb.jpg" // 썸네일 영상칸에는 영상 넣으면 재밌을 듯
+				> 
+					<source src="/coding_anim.mp4" type="video/mp4" /> 
 				</video>
 			</div>
 		</div>

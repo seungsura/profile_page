@@ -1,15 +1,14 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
-import AnimatedCursor from 'react-animated-cursor';
 import { useEffect, useState } from 'react';
-import NavBar from '@/components/NavBar';
-import LandingPage from '@/components/LandingPage';
-import AboutMe from '@/components/AboutMe';
-import Education from '@/components/Education';
-import ToolBox from '@/components/ToolBox';
-import Projects from '@/components/Projects';
-import ContactMe from '@/components/ContactMe';
-//test
+import NavBar from '../components/NavBar';
+import LandingPage from '../components/LandingPage';
+import AboutMe from '../components/AboutMe';
+import Education from '../components/Education';
+import ToolBox from '../components/ToolBox';
+import Projects from '../components/Projects';
+import ContactMe from '../components/ContactMe';
+
 export default function Home() {
 	const [mounted, setMounted] = useState(false);
 
@@ -19,7 +18,6 @@ export default function Home() {
 
 	return (
 		<ThemeProvider attribute="class" defaultTheme="dark">
-
 			<NavBar />
 			<main className="bg-white text-gray-800 dark:bg-gray-900 dark:text-white">
 				{/* Front Section, covers entire screen */}

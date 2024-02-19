@@ -16,6 +16,8 @@ interface Tool {
 	icon: React.ReactElement;
 }
 
+// 이것도 커스텀 가능한 부분이라 좋은 샘플로 남겨놔도 상관 없음
+// Projects와 마찬가지로 languagueTools와 같은 대분류를 포함하여 json으로 던져서 받는 식으로 처리하면?
 const languageTools: Tool[] = [
 	{
 		index: 0,
@@ -44,6 +46,7 @@ const languageTools: Tool[] = [
 	},
 ];
 
+// 이하 동일
 const frameworkTools: Tool[] = [
 	{
 		index: 0,
