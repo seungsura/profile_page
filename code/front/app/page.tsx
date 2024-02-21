@@ -1,6 +1,5 @@
 'use client';
 import { ThemeProvider } from 'next-themes';
-import { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import LandingPage from '../components/LandingPage';
 import AboutMe from '../components/AboutMe';
@@ -10,12 +9,6 @@ import Projects from '../components/Projects';
 import ContactMe from '../components/ContactMe';
 
 export default function Home() {
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
 	return (
 		<ThemeProvider attribute="class" defaultTheme="dark">
 			<NavBar />
