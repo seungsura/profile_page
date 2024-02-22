@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ContentsController } from './landpage.controller';
-import { UserService } from './landpage.service';
+import { LandpageController } from './landpage.controller';
+import { LandpageService } from './landpage.service';
 
 @Module({
-  controllers: [ContentsController],
-  providers: [UserService],
+  controllers: [LandpageController],
+  providers: [LandpageService],
 })
-export class UserModule {}
+export class LandpageModule {}
