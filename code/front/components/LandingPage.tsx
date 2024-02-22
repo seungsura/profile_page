@@ -27,32 +27,19 @@ export default function LandingPage() {
 	}, [titles.length]);
 
 	const handleCreateApp = async (e: { preventDefault: () => void; }) => {
-		e.preventDefault();
-	
-		try {
-		  const response = await fetch(
-				`/api/users?name=&age=`,{
-				method: "GET",
-				headers: {
-					'Content-type': 'application/json',
-				},
-			}
-		  );
-		//   if (response.status === 201) {
-		// 	  alert('The application was successfully created.');
-		// 	  setModalIsOpen(false);
-		// 	  document.body.style.overflowY = 'auto';
-		// 	  getApps();
-		//   }
-		} catch (error) {
-		// 동일한 이름의 appname 을 입력했을 때 에러 반환
-		//   if (error.response && error.response.data && error.response.data.error === 'This application name already exists.') {
-		// 	alert('This application name already exists.');
-		//   } else {
-		// 	console.error('There was an error!', error);
-		// 	alert('There was an error while creating the application.');
-		//   }
-		}
+		const [jobData, setJobData] = useState([]);
+
+		// useEffect(() => {
+		//   const fetchData = async () => {
+		// 	const data = await handler(url, res);
+		// 	const filteredData = data.filter(
+		// 	  (job) => daysRemaining(job.end_date) > 0
+		// 	);
+		// 	filteredData.sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
+		// 	setJobData(filteredData.slice(0, 4));
+		//   };
+		//   fetchData();
+		// }, []);
 	  };
 
 	return (
