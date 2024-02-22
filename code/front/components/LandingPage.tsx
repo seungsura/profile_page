@@ -1,8 +1,10 @@
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { SiLeetcode } from 'react-icons/si';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
+import { SiLeetcode } from 'react-icons/si';
 import TextTransition, { presets } from 'react-text-transition';
+import handler from '../app/api'
+import styles from '../styles/CreateProjectBox.module.css';
 
 export default function LandingPage() {
 	const line1 = 'Hi, I am a DevOps Engineer';
@@ -23,6 +25,35 @@ export default function LandingPage() {
 		}, 3000);
 		return () => clearInterval(interval);
 	}, [titles.length]);
+
+	const handleCreateApp = async (e: { preventDefault: () => void; }) => {
+		e.preventDefault();
+	
+		try {
+		  const response = await fetch(
+				`/api/users?name=&age=`,{
+				method: "GET",
+				headers: {
+					'Content-type': 'application/json',
+				},
+			}
+		  );
+		//   if (response.status === 201) {
+		// 	  alert('The application was successfully created.');
+		// 	  setModalIsOpen(false);
+		// 	  document.body.style.overflowY = 'auto';
+		// 	  getApps();
+		//   }
+		} catch (error) {
+		// 동일한 이름의 appname 을 입력했을 때 에러 반환
+		//   if (error.response && error.response.data && error.response.data.error === 'This application name already exists.') {
+		// 	alert('This application name already exists.');
+		//   } else {
+		// 	console.error('There was an error!', error);
+		// 	alert('There was an error while creating the application.');
+		//   }
+		}
+	  };
 
 	return (
 		<div className="min-h-[100dvh] w-full md:flex md:items-center md:justify-center">
