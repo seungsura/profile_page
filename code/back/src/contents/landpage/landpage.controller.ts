@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { UserService } from './landpage.service';
+import { LandpageService } from './landpage.service';
 
-@Controller('contents')
-export class ContentsController {
-  constructor(private readonly contentsService: UserService) {}
+@Controller('contents/landpage')
+export class LandpageController {
+  constructor(private readonly landpageService: LandpageService) {}
 
   @Get()
-  getContents(): { name: string }[] {
-    return this.contentsService.getUsers();
+  getUsers(): { name: string }[] {
+    // LandpageService 사용하여 사용자 정보를 가져옴
+    return this.landpageService.getUsers();
   }
 }
