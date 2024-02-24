@@ -3,149 +3,152 @@ import { useEffect, useState } from 'react';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import { SiLeetcode } from 'react-icons/si';
 import TextTransition, { presets } from 'react-text-transition';
+import styles from '../styles/LandingPage.module.css';
 import handler from '../app/api'
-import styles from '../styles/CreateProjectBox.module.css';
+
+interface socialLink {
+	name: string;
+	url: string;
+}
 
 export default function LandingPage() {
 	const line1 = 'Hi, I am a DevOps Engineer';
 	const line2 = 'I like to learn new things and build stuff.';
+	const titles = ['Computer Science Student', 'Full Stack Developer', 'Competitive Programmer', 'Caffeinated Coder'];
 
 	const [mounted, setMounted] = useState(false);
+	const [titleIndex, setTitleIndex] = useState(0);
+
+	const linkData: socialLink[] = [
+		{ name: 'Github', url: '깃허브 링크가 들어갈 자리' },
+		{ name: 'LinkedIn', url: '링크드인 같은 링크가 들어갈 자리 필요한가' },
+		{ name: 'Leetcode', url: '릿코드 링크가 들어갈 자리 (백준?)' }
+	];
 
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 
-	const titles = ['Computer Science Student', 'Full Stack Developer', 'Competitive Programmer', 'Caffeinated Coder'];
-	const [titleIndex, setTitleIndex] = useState(0);
-
 	useEffect(() => {
 		const interval = window.setInterval(() => {
 			setTitleIndex((prev) => (prev + 1) % titles.length);
 		}, 3000);
-		return () => clearInterval(interval);
+		return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 clearInterval을 통해 interval을 정리
 	}, [titles.length]);
 
-	const handleCreateApp = async (e: { preventDefault: () => void; }) => {
-		const [jobData, setJobData] = useState([]);
+	const RenderTitle = () => {
+	if (mounted) {
+		return (
+		<TextTransition springConfig={presets.gentle} direction='down' className={styles.text_transition}>
+			<p className={styles.nick_name}>{titles[titleIndex % titles.length]}</p>
+		</TextTransition>
+		);
+	} else {
+		return (
+		<h3 className={styles.initial_text}>
+			{' '}
+			<br />{' '}
+		</h3>
+		);
+	}
+	};
 
-		// useEffect(() => {
-		//   const fetchData = async () => {
-		// 	const data = await handler(url, res);
-		// 	const filteredData = data.filter(
-		// 	  (job) => daysRemaining(job.end_date) > 0
-		// 	);
-		// 	filteredData.sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
-		// 	setJobData(filteredData.slice(0, 4));
-		//   };
-		//   fetchData();
-		// }, []);
-	  };
+	const RenderAnimatedText = () => {
+		return (
+			<motion.h3
+			initial="hidden"
+			animate="visible"
+			variants={{
+				hidden: { opacity: 1, y: 50 },
+				visible: {
+				opacity: 1,
+				y: 0,
+				transition: {
+					staggerChildren: 0.02,
+				},
+				},
+			}}
+			className={styles.initial_text}
+			>
+			{line1.split('').map((char, index) => (
+				<motion.span
+				key={char + '-' + index}
+				variants={{
+					hidden: { opacity: 0, y: 50 },
+					visible: {
+					opacity: 1,
+					y: 0,
+					},
+				}}
+				>
+				{char}
+				</motion.span>
+			))}
+			<br />
+			{line2.split('').map((char, index) => (
+				<motion.span
+				key={char + '-' + index}
+				variants={{
+					hidden: { opacity: 0, y: 50 },
+					visible: {
+					opacity: 1,
+					y: 0,
+					},
+				}}
+				>
+				{char}
+				</motion.span>
+			))}
+			<br />
+			{titles[titleIndex % titles.length].split('').map((char, index) => (
+				<motion.span
+				key={char + '-' + index}
+				variants={{
+					hidden: { opacity: 0, y: 50 },
+					visible: {
+					opacity: 1,
+					y: 0,
+					},
+				}}
+				>
+				{char}
+				</motion.span>
+			))}
+			</motion.h3>
+		);
+	};
+
+	const SocialLinks: React.FC<{socialLinks: socialLink[]}>  = ({ socialLinks }) => {
+		return (
+		<div className="flex justify-center gap-16 py-3 text-5xl text-gray-600">
+			{socialLinks.map((link, index) => (
+			<a
+				key={index}
+				href={link.url}
+				target="_blank"
+				rel="noreferrer"
+				aria-label={link.name}
+				className="group hover:cursor-pointer hover:text-black dark:hover:text-white"
+			>
+				{link.name === 'Github' && <AiFillGithub />}
+				{link.name === 'LinkedIn' && <AiFillLinkedin />}
+				{link.name === 'Leetcode' && <SiLeetcode />}
+				<p className="invisible text-xs group-hover:visible">{link.name}</p>
+			</a>
+			))}
+		</div>
+		);
+	};
 
 	return (
-		<div className="min-h-[100dvh] w-full md:flex md:items-center md:justify-center">
-			<div className="px-10 pt-10 text-center">
-				<h1 className="py-2 text-3xl font-medium text-cyan-700 dark:text-cyan-600 sm:text-4xl md:text-5xl">
+		<div className={styles.layout}>
+			<div className={styles.container}>
+				<h1 className={styles.name}>
 					성 이름
 				</h1>
-
-				{mounted ? (
-					<TextTransition springConfig={presets.default} className="flex items-center justify-center">
-						<p className="py-2 text-xl sm:text-2xl">{titles[titleIndex % titles.length]}</p>
-					</TextTransition>
-				) : (
-					<p className="py-2 text-xl sm:text-2xl">{titles[titleIndex % titles.length]}</p>
-				)}
-
-				{mounted ? (
-					<motion.h3
-						initial="hidden"
-						animate="visible"
-						variants={{
-							hidden: { opacity: 1 },
-							visible: {
-								opacity: 1,
-								transition: {
-									staggerChildren: 0.02,
-								},
-							},
-						}}
-						className="py-5 text-base leading-8 text-gray-600 dark:text-gray-400 md:text-lg"
-					>
-						{line1.split('').map((char, index) => {
-							return (
-								<motion.span
-									key={char + '-' + index}
-									variants={{
-										hidden: { opacity: 0, y: 50 },
-										visible: {
-											opacity: 1,
-											y: 0,
-										},
-									}}
-								>
-									{char}
-								</motion.span>
-							);
-						})}
-
-						<br />
-
-						{line2.split('').map((char, index) => {
-							return (
-								<motion.span
-									key={char + '-' + index}
-									variants={{
-										hidden: { opacity: 0, y: 50 },
-										visible: {
-											opacity: 1,
-											y: 0,
-										},
-									}}
-								>
-									{char}
-								</motion.span>
-							);
-						})}
-					</motion.h3>
-				) : (
-					<h3 className="py-5 text-base leading-8 text-gray-600 dark:text-gray-400 md:text-lg">
-						{' '}
-						<br />{' '}
-					</h3>
-				)}
-				<div className="flex justify-center gap-16 py-3 text-5xl text-gray-600">
-					<a
-						href="깃허브 링크가 들어갈 자리"
-						target="_blank"
-						aria-label="Github"
-						rel="noreferrer"
-						className="group hover:cursor-pointer hover:text-black dark:hover:text-white"
-					>
-						<AiFillGithub />
-						<p className="invisible text-xs group-hover:visible">Github</p>
-					</a>
-					<a
-						href="링크드인 같은 링크가 들어갈 자리 필요한가? 아이콘은 AifillLinkedin을 변경해야함"
-						target="_blank"
-						rel="noreferrer"
-						aria-label="LinkedIn"
-						className="group hover:cursor-pointer hover:text-cyan-800 dark:hover:text-cyan-500"
-					>
-						<AiFillLinkedin />
-						<p className=" invisible  text-xs group-hover:visible">LinkedIn</p>
-					</a>
-					<a
-						href="릿코드 링크가 들어갈 자리 (백준?)"
-						target="_blank"
-						rel="noreferrer"
-						aria-label="Leetcode"
-						className="group hover:cursor-pointer hover:text-yellow-600"
-					>
-						<SiLeetcode />
-						<p className="invisible text-xs group-hover:visible">Leetcode</p>
-					</a>
-				</div>
+				{RenderTitle()}
+      			{RenderAnimatedText()}
+				<SocialLinks socialLinks={linkData} />
 			</div>
 
 			<div className="px-10 py-20 md:px-0">
