@@ -1,10 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AiFillGithub, AiFillCloseCircle } from 'react-icons/ai';
-import Fade from 'react-reveal/Fade';
 import { useTheme } from 'next-themes';
 import { Element } from 'react-scroll';
+import ProjectCard from './ProjectCard';
 
 interface Project {
 	index: number;
@@ -77,17 +74,6 @@ export default function Projects() {
 			hover_gif_light: '/project_gifs/light/bu-news-android.gif',
 		},
 		{
-			index: 3,
-			image: '/project_thumbnails/light/bu-news.png',
-			image_dark: '/project_thumbnails/dark/bu-news.png',
-			description: 'Web Application',
-			name: 'BU News',
-			demo_link: 'https://bu-news.vercel.app/',
-			github_link: 'https://github.com/ChiragAgg5k/bu-news-website',
-			hover_gif_dark: '/project_gifs/dark/bu-news.gif',
-			hover_gif_light: '/project_gifs/light/bu-news.gif',
-		},
-		{
 			index: 4,
 			image: '/project_thumbnails/light/weatherly.png',
 			image_dark: '/project_thumbnails/dark/weatherly.png',
@@ -98,93 +84,23 @@ export default function Projects() {
 			hover_gif_dark: '/project_gifs/dark/weatherly.gif',
 			hover_gif_light: '/project_gifs/light/weatherly.gif',
 		},
-		{
-			index: 5,
-			image: '/project_thumbnails/light/bug-squash.png',
-			image_dark: '/project_thumbnails/dark/bug-squash.png',
-			description: 'Web Application',
-			name: 'Bug Squash',
-			demo_link: 'https://bug-squash.co',
-			github_link: 'https://github.com/ChiragAgg5k/bug-squash',
-			hover_gif_dark: '/project_gifs/dark/bug-squash.gif',
-			hover_gif_light: '/project_gifs/light/bug-squash.gif',
-		},
 	];
+
+	const girdRows = Math.ceil(Projects.length / 3);
+	const containerGrid = `mx-0 grid grid-cols-1 grid-rows-${girdRows} sm:grid-cols-2 md:mx-4 lg:grid-cols-3`
 
 	return (
 		<>
 			<Element name="projects" className="relative" />
-			<div className="mb-48">
-				<h1 className="mb-16 text-center text-4xl font-medium text-gray-800 transition duration-300 dark:text-white lg:mb-20 xl:mb-24">
+			<h1 className="mb-16 text-center text-4xl font-medium text-gray-800 transition duration-300 dark:text-white lg:mb-20 xl:mb-24">
 					Projects
-				</h1>
-				<div className="mx-0 grid grid-cols-1 grid-rows-2 sm:grid-cols-2 md:mx-4 lg:grid-cols-3">
+			</h1>
+			<div>
+				<div className={containerGrid}>
 					{projects.map((project) => {
 						return (
-							<div
-								key={project.index}
-								className={`group m-6 flex items-center flex-col justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500  dark:border-gray-800 dark:text-white dark:hover:border-cyan-700`}
-							>
-								<Fade bottom>
-									<div className="relative flex items-center justify-center h-full">
-										<Image
-											src={theme === 'light' ? project.image : project.image_dark}
-											alt={project.name}
-											width={300}
-											height={224}
-											title="Click to enlarge"
-											onClick={() => {
-												setModalImg(theme === 'dark' ? project.image_dark : project.image);
-											}}
-											className={`absolute mb-4 h-auto max-h-56 w-full transform rounded-lg object-contain transition duration-500 ease-in-out hover:cursor-pointer group-hover:opacity-0`}
-										/>
-										<Image
-											src={theme === 'light' ? project.hover_gif_light : project.hover_gif_dark}
-											alt={project.name}
-											width={300}
-											height={224}
-											className={`mb-4 h-auto max-h-56 w-full rounded-lg object-contain`}
-										/>
-									</div>
-									<div className={`w-full`}>
-										<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">
-											{project.description}
-										</p>
-										<p className="my-1 text-xl font-medium">{project.name}</p>
-										<div className="flex justify-between">
-											<Link
-												className="text-sm"
-												href={project.demo_link}
-												aria-label="Visit Demo"
-												onClick={
-													project.demo_link === '#'
-														? (e) => {
-															e.preventDefault();
-														}
-														: (e) => {
-															e.preventDefault();
-															window.open(project.demo_link, '_blank');
-														}
-												}
-											>
-												{project.demo_link === '#' ? '' : 'Visit'}
-												<span
-													className="block h-[1px] max-w-0 bg-gray-700 transition-all duration-500 group-hover:max-w-full dark:bg-white"></span>
-											</Link>
-											<Link
-												href={project.github_link}
-												rel="noreferrer"
-												title="Github Link"
-												target="_blank"
-											>
-												<AiFillGithub className="inline-block text-4xl text-black transition delay-75 ease-in-out hover:scale-125 dark:text-white" />
-											</Link>
-										</div>
-									</div>
-								</Fade>
-							</div>
-						);
-					})}
+							<ProjectCard projectName={project} setModalImg={setModalImg} theme={theme} />
+					)})}
 				</div>
 			</div>
 			<div
