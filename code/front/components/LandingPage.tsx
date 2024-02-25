@@ -6,7 +6,7 @@ import TextTransition, { presets } from 'react-text-transition';
 import styles from '../styles/LandingPage.module.css';
 import handler from '../app/api'
 
-interface socialLink {
+interface ISocialLink {
 	name: string;
 	url: string;
 }
@@ -19,7 +19,7 @@ export default function LandingPage() {
 	const [mounted, setMounted] = useState(false);
 	const [titleIndex, setTitleIndex] = useState(0);
 
-	const linkData: socialLink[] = [
+	const linkData: ISocialLink[] = [
 		{ name: 'Github', url: '깃허브 링크가 들어갈 자리' },
 		{ name: 'LinkedIn', url: '링크드인 같은 링크가 들어갈 자리 필요한가' },
 		{ name: 'Leetcode', url: '릿코드 링크가 들어갈 자리 (백준?)' }
@@ -99,28 +99,13 @@ export default function LandingPage() {
 				{char}
 				</motion.span>
 			))}
-			<br />
-			{titles[titleIndex % titles.length].split('').map((char, index) => (
-				<motion.span
-				key={char + '-' + index}
-				variants={{
-					hidden: { opacity: 0, y: 50 },
-					visible: {
-					opacity: 1,
-					y: 0,
-					},
-				}}
-				>
-				{char}
-				</motion.span>
-			))}
 			</motion.h3>
 		);
 	};
 
-	const SocialLinks: React.FC<{socialLinks: socialLink[]}>  = ({ socialLinks }) => {
+	const SocialLinks: React.FC<{socialLinks: ISocialLink[]}>  = ({ socialLinks }) => {
 		return (
-		<div className="flex justify-center gap-16 py-3 text-5xl text-gray-600">
+		<div className={styles.social_container}>
 			{socialLinks.map((link, index) => (
 			<a
 				key={index}

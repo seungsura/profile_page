@@ -19,3 +19,6 @@
 .initial_text {
     @apply py-5 text-base leading-8 text-gray-600 dark:text-gray-400 md:text-lg
 }
+.social_container {
+    @apply flex justify-center gap-16 py-3 text-5xl text-gray-600
+}
