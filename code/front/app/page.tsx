@@ -22,7 +22,7 @@ export default function Home() {
 				<section>
 					<AboutMe />
 					<Education />
-					<ToolBox />
+					{/* <ToolBox /> */}
 					<Projects />
 				</section>
 
