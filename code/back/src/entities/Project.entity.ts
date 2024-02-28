@@ -2,7 +2,6 @@ import {
   Column,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -32,8 +31,9 @@ pkind: string;
 @Column({type:'varchar'})
 plink: string;
 
-// @ManyToOne{
-//   ()=>User,
-//   (User)=>User.uid
-// }
+@ManyToOne(
+  (type)=>User,
+  (User)=>User.uid
+  )
+  user!:User;
 }
