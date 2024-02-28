@@ -1,6 +1,5 @@
 import {
 Column,
-CreateDateColumn,
 Entity,
 OneToMany,
 PrimaryGeneratedColumn,
@@ -17,6 +16,9 @@ uid: number;
 example: '1',
 description: 'Primary key ID',
 })
+
+@Column()
+type!: string;
 
 @Column({ type: 'text' })
 short_intro: string;
@@ -37,9 +39,9 @@ phone: string;
 resume: string;
 
 @OneToMany(
-  () => Project,
+  (type) => Project,
   (Project) => Project.uid
 )
-project: Project[]; // 한 유저당 여러개의 project 생성
+project!: Project[]; // 한 유저당 여러개의 project 생성
 
 }
