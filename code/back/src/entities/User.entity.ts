@@ -1,5 +1,6 @@
 import {
 Column,
+  CreateDateColumn,
 Entity,
 OneToMany,
 PrimaryGeneratedColumn,
@@ -26,8 +27,8 @@ email: string;
 @Column({type: 'varchar'})
 name: string;
 
-// @Column()
-// birth: Date; //데이터 타입 date가 datetime으로 자동 변환되며 DB 입력 시 오류 발생
+@CreateDateColumn()
+birth: Date;
 
 @Column({type:'int'})
 phone: number;
