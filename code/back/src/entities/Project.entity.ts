@@ -1,11 +1,13 @@
 import {
-    Column,
-    Entity,
-    OneToMany,
-    PrimaryGeneratedColumn,
-  } from 'typeorm';
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { ApiProperty } from '@nestjs/swagger';
+import { User } from './User.entity';
 
 @Entity({name:'project'})
 export class Project {
@@ -13,8 +15,8 @@ export class Project {
 uid: number;
 
 @ApiProperty({
-    example: '1',
-    description: 'Primary key ID',
+  example: '1',
+  description: 'Primary key ID',
 })
 
 
@@ -29,5 +31,9 @@ pkind: string;
 
 @Column({type:'varchar'})
 plink: string;
+
+// @ManyToOne{
+//   ()=>User,
+//   (User)=>User.uid
+// }
 }
-  
