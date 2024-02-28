@@ -1,6 +1,6 @@
 import {
 Column,
-  CreateDateColumn,
+CreateDateColumn,
 Entity,
 OneToMany,
 PrimaryGeneratedColumn,
@@ -14,8 +14,8 @@ export class User {
 uid: number;
 
 @ApiProperty({
-  example: '1',
-  description: 'Primary key ID',
+example: '1',
+description: 'Primary key ID',
 })
 
 @Column({ type: 'text' })
@@ -27,16 +27,19 @@ email: string;
 @Column({type: 'varchar'})
 name: string;
 
-@CreateDateColumn()
-birth: Date;
+@Column({type:'varchar'})
+birth: string;
 
-@Column({type:'int'})
-phone: number;
+@Column({type:'varchar'})
+phone: string;
 
 @Column({type:'varchar'})
 resume: string;
 
-@OneToMany(() => Project, (Project) => Project.uid)
-project: Project[];                         // 한 유저당 여러개의 project 생성
+@OneToMany(
+  () => Project,
+  (Project) => Project.uid
+)
+project: Project[]; // 한 유저당 여러개의 project 생성
 
 }
