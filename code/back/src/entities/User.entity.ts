@@ -17,9 +17,6 @@ example: '1',
 description: 'Primary key ID',
 })
 
-@Column()
-type!: string;
-
 @Column({ type: 'text' })
 short_intro: string;
 
@@ -38,10 +35,10 @@ phone: string;
 @Column({type:'varchar'})
 resume: string;
 
-@OneToMany(
-  (type) => Project,
-  (Project) => Project.uid
-)
-project!: Project[]; // 한 유저당 여러개의 project 생성
+// @OneToMany(
+//   (type) => Project,
+//   (Project) => Project.uid
+// )
+// project!: Project[]; // OneToMany는 생략 가능하므로 생략
 
 }

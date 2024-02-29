@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -10,30 +10,37 @@ import { User } from './User.entity';
 
 @Entity({name:'project'})
 export class Project {
-@PrimaryGeneratedColumn({type: 'int', name: 'uid'})
-uid: number;
+@PrimaryColumn({ 
+    name: 'pname',
+    type: 'varchar'
+  })
 
 @ApiProperty({
   example: '1',
   description: 'Primary key ID',
 })
 
-
-@Column({type: 'varchar'})
-pname: string;
+@ManyToOne(
+  ()=>User,
+  (User)=>User.uid
+  )
+  user!:User;
 
 @Column({type: 'varchar'})
 period: string;
 
 @Column({type: 'varchar'})
-pkind: string;
+category: string;
+
+@Column({type: 'varchar'})
+image: string;
+
+@Column({type: 'varchar'})
+h_image: string;
+
+@Column({type: 'varchar'})
+stack: string;
 
 @Column({type:'varchar'})
-plink: string;
-
-@ManyToOne(
-  (type)=>User,
-  (User)=>User.uid
-  )
-  user!:User;
+purl: string;
 }
