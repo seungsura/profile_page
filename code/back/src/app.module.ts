@@ -5,6 +5,7 @@ import { ContentsModule } from './contents/contents.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/User.entity';
 import { Project } from './entities/Project.entity';
+import { Career } from './entities/Career.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { Project } from './entities/Project.entity';
       username: 'root',
       password: 'maria1025',
       database: 'profile',
-      entities: [User,Project],
+      entities: [User,Project,Career],
       synchronize: true,
       // dateStrings:'date' db가 date가 아니라 datetime으로 입력값을 요구하여 추가함
     }),
