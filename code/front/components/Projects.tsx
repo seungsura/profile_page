@@ -20,6 +20,8 @@ export default function Projects() {
 	const [showModal, setShowModal] = useState<boolean>(false);
 	const { theme } = useTheme();
 
+	const mainTitle = "Projects"
+
 	useEffect(() => {
 		const closeOnEscapeKey = (e: KeyboardEvent) => {
 			if (e.key === 'Escape') {
@@ -93,7 +95,7 @@ export default function Projects() {
 		<>
 			<Element name="projects" className="relative" />
 			<h1 className="mb-16 text-center text-4xl font-medium text-gray-800 transition duration-300 dark:text-white lg:mb-20 xl:mb-24">
-					Projects
+				{mainTitle}
 			</h1>
 			<div>
 				<div className={containerGrid}>

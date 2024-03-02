@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AiFillGithub } from 'react-icons/ai';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import { useTheme } from 'next-themes';
 
 
@@ -28,7 +28,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({ projectName, setModalImg, th
     <div
         className={`group m-6 flex items-center flex-col justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500  dark:border-gray-800 dark:text-white dark:hover:border-cyan-700`}
     >
-        <Fade bottom>
+        <Fade direction='up'>
             <div className="relative flex items-center justify-center h-full">
                 <Image
                     src={theme === 'light' ? projectName.image : projectName.image_dark}

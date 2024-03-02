@@ -9,7 +9,7 @@ import { FaDocker } from 'react-icons/fa';
 import Fade from 'react-reveal/Fade';
 import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
-import Projects from './Projects';
+import Projects from '../Projects';
 
 interface Tool {
 	index: number;

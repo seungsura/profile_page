@@ -5,6 +5,9 @@ import { SiLeetcode } from 'react-icons/si';
 import TextTransition, { presets } from 'react-text-transition';
 import styles from '../styles/LandingPage.module.css';
 import handler from '../app/api'
+import DynamicMessageComponent from './WelcomeText'
+
+
 
 interface ISocialLink {
 	name: string;
@@ -15,8 +18,10 @@ export default function LandingPage() {
 	const line1 = 'Hi, I am a DevOps Engineer';
 	const line2 = 'I like to learn new things and build stuff.';
 	const titles = ['Computer Science Student', 'Full Stack Developer', 'Competitive Programmer', 'Caffeinated Coder'];
-	const animatedMp4 = "coding_anim.mp4"
+	const animatedMp4 = "allLogo.mp4"
+	const mainTitle = "Hello!"
 
+	const [scrollY, setScrollY] = useState(0);
 	const [mounted, setMounted] = useState(false);
 	const [titleIndex, setTitleIndex] = useState(0);
 
@@ -36,6 +41,18 @@ export default function LandingPage() {
 		}, 3000);
 		return () => clearInterval(interval); // 컴포넌트가 언마운트될 때 clearInterval을 통해 interval을 정리
 	}, [titles.length]);
+
+	useEffect(() => {
+	  const handleScroll = () => {
+		setScrollY(window.scrollY);
+	  };
+  
+	  window.addEventListener('scroll', handleScroll);
+  
+	  return () => {
+		window.removeEventListener('scroll', handleScroll);
+	  };
+	}, []);
 
 	const RenderTitle = () => {
 	if (mounted) {
@@ -90,7 +107,7 @@ export default function LandingPage() {
 				<motion.span
 				key={char + '-' + index}
 				variants={{
-					hidden: { opacity: 0, y: 50 },
+					hidden: { opacity: 0, y: 0 },
 					visible: {
 					opacity: 1,
 					y: 0,
@@ -127,27 +144,26 @@ export default function LandingPage() {
 	};
 
 	return (
-		<div className={styles.layout}>
-			<div className={styles.container}>
-				<h1 className={styles.name}>
-					성 이름
-				</h1>
-				{RenderTitle()}
-      			{RenderAnimatedText()}
-				<SocialLinks socialLinks={linkData} />
-			</div>
-
-			<div className="px-10 py-20 md:px-0">
-				<video
-					autoPlay
-					loop
-					muted
-					className="w-100 mx-auto rounded-full border-4 border-cyan-500"
-					poster="/coding_anim_thumb.jpg" // 썸네일 영상칸에는 영상 넣으면 재밌을 듯
-				> 
-					<source src={animatedMp4} type="video/mp4" /> 
-				</video>
-			</div>
+		<div style={{ transform: `translateY(-${scrollY}px)` }}>
+		<div className="relative w-100 h-100">
+		  <video
+			autoPlay
+			loop
+			muted
+			className="position-absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40"
+		  >
+			<source src={animatedMp4} type="video/mp4" />
+		  </video>
+		  <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10 ${styles.container}`}>
+			<h1 className={styles.name}>
+				<DynamicMessageComponent/>
+			</h1>
+			<br/>
+			{RenderTitle()}
+			{RenderAnimatedText()}
+			<SocialLinks socialLinks={linkData} />
+		  </div>
 		</div>
-	);
+		</div>
+	  );
 }
