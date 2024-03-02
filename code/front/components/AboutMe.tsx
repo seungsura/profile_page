@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import { Element } from 'react-scroll';
 import styles from '../styles/AboutMe.module.css'
 

@@ -1,6 +1,6 @@
 import { Element } from 'react-scroll';
 import Image from 'next/image';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import React, { ReactNode } from 'react';
 
 interface EducationItem {
@@ -15,42 +15,44 @@ interface EducationItem {
 const Education: React.FC = () => {
 	interface EducationItemProps {
 		item: EducationItem;
-		classname: string;
 	}
 
-	const title = "Education"
+	const title = "Career"
 
 	const educationItems: EducationItem[] = [
 		{
-			year: '연도',
-			institution: '교육 이름',
-			subtitle: 'eng_name',
-			grade: '등급',
-			imageSrc: '/bps_logo.png',
-			link: '교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)',
+			year: '2023 ~',
+			institution: '펄어비스',
+			subtitle: 'PEARL ABYSS',
+			grade: 'GameEngine Platform Division',
+			imageSrc: '/pearlabyss_logo.webp',
+			link: 'https://www.pearlabyss.com/',
 		},
 		{
-			year: '연도-연도',
-			institution: '암거나',
-			subtitle: 'eng_name',
-			grade: '과학',
-			imageSrc: '/bps_logo.png',
-			link: '교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)',
+			year: '2022 - 2023',
+			institution: '카카오클라우드 스쿨',
+			subtitle: 'KakaoCloud School',
+			grade: 'Cloud Engineer Track',
+			imageSrc: '/kakaoCloudSchool.png',
+			link: 'https://www.kakaocorp.com/page/detail/9794',
 		},
 		{
-			year: '연도-연도',
+			year: '2019 - 2023',
 			institution: '전남대학교',
-			subtitle: 'eng_name',
-			grade: 'chonnam University',
-			imageSrc: '/bennett_logo.png',
-			link: '교육받은곳(대학, 교육 등 커리어) 링크가 들어갈 자리(사진을 누르면 이동)',
-		},
+			subtitle: 'Chonnam National Univ',
+			grade: 'Bachelor of Engineering',
+			imageSrc: '/chonnamUniv.png',
+			link: 'https://www.jnu.ac.kr/jnumain.aspx',
+		}
 	];
 
-	const EducationItem: React.FC<EducationItemProps> = ({ item, classname }) => {
+	const lastItem = educationItems[educationItems.length - 1];
+	const otherItems = educationItems.slice(0, educationItems.length - 1);
+
+	const CareerItem: React.FC<EducationItemProps> = ({ item }) => {
 		return (
-			<Fade left cascade>
-				<div className={`group m-4 flex justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500 dark:border-gray-800 dark:text-white dark:hover:border-cyan-700 ${classname}`}>
+			<Fade direction='left' cascade>
+				<div className={`group m-4 flex justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500 dark:border-gray-800 dark:text-white dark:hover:border-teal-700`}>
 					<div>
 						<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">{item.year}</p>
 						<p className="my-1 text-xl font-medium">{item.institution}</p>
@@ -61,7 +63,7 @@ const Education: React.FC = () => {
 						<Image
 							src={item.imageSrc}
 							alt="Education Image"
-							width={100}
+							width={300}
 							title="Education or Co"
 							height={100}
 							onClick={() => {
@@ -82,9 +84,9 @@ const Education: React.FC = () => {
 				<h3 className="mb-16 text-center text-4xl font-medium text-gray-800 transition duration-300 dark:text-white lg:mb-20 xl:mb-24">
 					{title}
 				</h3>
-					<div className="mx-0 grid grid-cols-1 sm:grid-cols-2 md:mx-5 lg:grid-cols-4">
+					<div className="mx-0 grid grid-cols-1 md:mx-5 ">
 						{educationItems.map((item, index) => (
-							<EducationItem key={index} item={item} classname={index === 2 ? "sm:col-span-2" : ""}/>
+							<CareerItem key={index} item={item}/>
 						))}
 					</div>
 				</div>
