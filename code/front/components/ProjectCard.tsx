@@ -26,7 +26,7 @@ interface IProjectCardProps {
 
 const ProjectCard: React.FC<IProjectCardProps> = ({ projectName, setModalImg, theme }) => (
     <div
-        className={`group m-6 flex items-center flex-col justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500  dark:border-gray-800 dark:text-white dark:hover:border-cyan-700`}
+        className={`group m-6 flex items-center flex-col justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500  dark:border-gray-800 dark:text-white dark:hover:border-teal-700`}
     >
         <Fade direction='up'>
             <div className="relative flex items-center justify-center h-full">
@@ -39,7 +39,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({ projectName, setModalImg, th
                     onClick={() => {
                         setModalImg(theme === 'dark' ? projectName.image_dark : projectName.image);
                     }}
-                    className={`absolute mb-4 h-auto max-h-56 w-full transform rounded-lg object-contain transition duration-500 ease-in-out hover:cursor-pointer group-hover:opacity-0`}
+                    className={`absolute mb-4 h-auto max-h-56 w-full transform rounded-lg object-contain transition duration-500 ease-in-out hover:cursor-pointer group-hover:opacity-0 `}
                 />
                 <Image
                     src={theme === 'light' ? projectName.hover_gif_light : projectName.hover_gif_dark}

@@ -146,14 +146,15 @@ export default function LandingPage() {
 	return (
 		<div style={{ transform: `translateY(-${scrollY}px)` }}>
 		<div className="relative w-100 h-100">
-		  <video
+			<div className="absolute top-0 left-0 w-full h-full bg-indigo-950 opacity-50"></div>
+			<video
 			autoPlay
 			loop
 			muted
-			className="position-absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40"
-		  >
+			className="position-absolute top-0 left-0 w-full h-full object-cover z-0"
+			>
 			<source src={animatedMp4} type="video/mp4" />
-		  </video>
+			</video>
 		  <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white z-10 ${styles.container}`}>
 			<h1 className={styles.name}>
 				<DynamicMessageComponent/>
