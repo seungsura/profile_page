@@ -2,7 +2,7 @@
 import { ThemeProvider } from 'next-themes';
 import NavBar from '../components/NavBarV2';
 import LandingPage from '../components/LandingPageV2';
-import AboutMe from '../components/AboutMe';
+import AboutMe from '../components/AboutMeV2';
 import Education from '../components/Career';
 import Projects from '../components/Projects';
 import ContactMe from '../components/ContactMe';
@@ -11,7 +11,7 @@ export default function Home() {
 	return (
 		<ThemeProvider attribute="class" defaultTheme="dark">
 			<NavBar />
-			<main className="bg-stone-200 text-gray-800 dark:bg-neutral-900 dark:text-white">
+			<main className="bg-stone-200 text-gray-800 dark:bg-indigo-900/40 dark:text-white">
 				{/* Front Section, covers entire screen */}
 				<section>
 					<LandingPage />

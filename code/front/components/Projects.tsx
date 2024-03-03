@@ -89,7 +89,7 @@ export default function Projects() {
 	];
 
 	const girdRows = Math.ceil(Projects.length / 3);
-	const containerGrid = `mx-0 grid grid-cols-1 grid-rows-${girdRows} sm:grid-cols-2 md:mx-4 lg:grid-cols-3`
+	const containerGrid = `mx-0 grid grid-cols-1 grid-rows-${girdRows} sm:grid-cols-2 md:mx-4 lg:grid-cols-4 pb-8 pb-32`
 
 	return (
 		<>

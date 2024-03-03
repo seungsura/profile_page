@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Fade } from 'react-awesome-reveal';
 import { Element } from 'react-scroll';
 import styles from '../styles/AboutMe.module.css'
+import CareerItem from './Career'
 
 export default function AboutMe() {
 	const title = "About Me"
@@ -22,13 +23,14 @@ export default function AboutMe() {
 				</h3>
 				{/* 박스제거 */}
 				<div className="mx-4 flex flex-col items-center justify-around rounded-xl border-2 border-cyan-400 p-8 dark:border-0 sm:mx-10 md:flex-row">
-					<Image
+					{/* <Image
 						src={profileImageFileName}
 						alt="Profile Picture"
 						width={480}
 						height={480}
 						className={styles.profile_image}
-					/>
+					/> */}
+					<CareerItem/>
 					<p className={styles.profile_text}>
 						{introduction}
 					</p>

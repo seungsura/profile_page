@@ -25,7 +25,7 @@ const Education: React.FC = () => {
 			institution: '펄어비스',
 			subtitle: 'PEARL ABYSS',
 			grade: 'GameEngine Platform Division',
-			imageSrc: '/pearlabyss_logo.webp',
+			imageSrc: '/pearlabyss_logo.png',
 			link: 'https://www.pearlabyss.com/',
 		},
 		{
@@ -52,14 +52,14 @@ const Education: React.FC = () => {
 	const CareerItem: React.FC<EducationItemProps> = ({ item }) => {
 		return (
 			<Fade direction='left' cascade>
-				<div className={`group m-4 flex justify-between rounded-xl border-2 border-cyan-200 p-5 text-gray-700 hover:border-cyan-500 dark:border-gray-800 dark:text-white dark:hover:border-teal-700`}>
+				<div className={`group m-4 flex justify-between rounded-xl border-2 p-5 hover:border-cyan-500 dark:border-gray-800 dark:text-white dark:hover:border-teal-700`}>
 					<div>
 						<p className="mb-2 text-base text-cyan-600 dark:text-cyan-500">{item.year}</p>
 						<p className="my-1 text-xl font-medium">{item.institution}</p>
 						<p className="my-1 text-sm font-medium">{item.subtitle}</p>
 						<p className="text-sm">{item.grade}</p>
 					</div>
-					<div className="block">
+					<div className="block max-h-10">
 						<Image
 							src={item.imageSrc}
 							alt="Education Image"
@@ -84,12 +84,12 @@ const Education: React.FC = () => {
 				<h3 className="mb-16 text-center text-4xl font-medium text-gray-800 transition duration-300 dark:text-white lg:mb-20 xl:mb-24">
 					{title}
 				</h3>
-					<div className="mx-0 grid grid-cols-1 md:mx-5 ">
-						{educationItems.map((item, index) => (
-							<CareerItem key={index} item={item}/>
-						))}
-					</div>
+				<div className="mx-0 md:mx-5">
+					{educationItems.map((item, index) => (
+						<CareerItem key={index} item={item}/>
+					))}
 				</div>
+			</div>
 		</>
 	);
 };
