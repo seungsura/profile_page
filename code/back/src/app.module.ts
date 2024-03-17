@@ -19,8 +19,8 @@ import { Career } from './entities/Career.entity';
       database: 'profile',
       entities: [User, Project, Career],
       synchronize: true,
-      // dateStrings:'date' db가 date가 아니라 datetime으로 입력값을 요구하여 추가함
     }),
+    // 만든 모듈
     ContentsModule,
   ],
   // 아래는 기본 모듈
