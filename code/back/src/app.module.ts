@@ -15,13 +15,13 @@ import { Career } from './entities/Career.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'maria1025',
+      password: '1234',
       database: 'profile',
-      entities: [User,Project,Career],
+      entities: [User, Project, Career],
       synchronize: true,
-      // dateStrings:'date' db가 date가 아니라 datetime으로 입력값을 요구하여 추가함
     }),
-    ContentsModule
+    // 만든 모듈
+    ContentsModule,
   ],
   // 아래는 기본 모듈
   controllers: [AppController],
